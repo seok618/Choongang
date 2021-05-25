@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table{
+		background-color: yellow;
+	}
+</style>
+
+<script type="text/javascript">
+	function chk() {
+		
+		/*체크박스 가져오는 (배열)가져와서 알림쥬게하려는 : 노티스란 이름을 가진 애들을 가져온다. 다 var로 가져옴*/
+		var chkbox = document.getElementsByName('notice'); 
+		var chk = false; 
+		
+		
+		if(!frm.name.value){
+			alert("이름을 입력 해주세요.");
+			frm.name.focus();
+			return false;
+		}
+		if(!frm.id.value){
+			alert("아이디를 입력 해주세요.");
+			frm.id.focus();
+			return false;
+		}
+		if(!frm.password.value){
+			alert("비밀번호 입력 해주세요.");
+			frm.password.focus();
+			return false;
+		}
+		
+		/*						3	*/
+		for(var i=0 ; i<chkbox.length ; i++) { 
+			if(chkbox[i].checked)	{
+				chk = true; 
+				break;
+			}
+			else 	                chk = false;
+		}
+
+		if (!chk) {	/*chk가 전부 false면 알림*/
+			alert("메일 수신을 선택해 주세요");
+			return false;
+		} 
+		return true;
+	}
+</script>
+
+</head>
+<body>
+	<form action="Person" method="post" name="frm" onsubmit="return chk()">
+		<h2>개인정보</h2>
+		<table border="1">
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name = "name"></td>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name = "id"></td>
+			</tr>
+			<tr>
+				<td>암호</td>
+				<td><input type="password" name = "password"></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>남자<input type="radio" name="gender" value = "남자" checked="checked"><br>
+					여자<input type="radio" name = "gender" value = "여자"></td>
+			</tr>
+			<tr>
+				<td>메일수신</td>
+				<td>공지<input type="checkbox" value = "공지" name = "notice"><br>
+					광고<input type="checkbox" value = "광고" name = "notice"><br>
+					배송<input type="checkbox" value = "배송" name = "notice"></td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td>
+					<select name = "job">
+						<option value = "장군">장군</option>
+						<option value = "가수" >가수</option>
+						<option value = "공무원" >공무원</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="확인"></td>
+				<td><input type="reset" value="입력취소"></td>
+			</tr>
+		</table>	
+	</form>
+</body>
+</html>
